@@ -23,16 +23,12 @@ impl<'a> Encoder<'a> {
     /// Creates a new encoder from the given image.
     pub fn from_image(image: &'a DynamicImage) -> Result<Self, &str> {
         match image {
-            DynamicImage::ImageLuma8(_) => { Err("Unimplemented") }
-            DynamicImage::ImageLumaA8(_) => { Err("Unimplemented") }
             DynamicImage::ImageRgb8(image) => {
                 Ok(Self::from_rgb(image.as_ref(), image.width(), image.height()))
             }
             DynamicImage::ImageRgba8(image) => {
                 Ok(Self::from_rgba(image.as_ref(), image.width(), image.height()))
             }
-            DynamicImage::ImageBgr8(_) => { Err("Unimplemented") }
-            DynamicImage::ImageBgra8(_) => { Err("Unimplemented") }
             _ => { Err("Unimplemented") }
         }
     }
